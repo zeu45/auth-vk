@@ -13,11 +13,11 @@
     "saveSpec": null,
     "fetchSpec": "latest"
   },
+    "_resolved": "https://registry.npmjs.org/auth-vk/-/auth-vk-1.1.2.tgz",
   "_spec": "auth-vk",
   "author": "Zeu4s <admin@dev-up.ru> (https://vk.com/zeuvs)",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "int-test": "mocha --require babel-core/register --recursive test"
+  "bugs": {
+    "url": "https://github.com/zeu45/auth-vk/issues"
   },
   "dependencies": {
     "debug": "^4.3.1",
@@ -37,6 +37,7 @@
   "engines": {
     "node": ">=12.0.0"
   },
+   "homepage": "https://github.com/zeu45/auth-vk#readme",
   "keywords": [
     "vk",
     "api",
@@ -56,7 +57,11 @@
   "main": "/",
   "module": "/index.js",
   "name": "auth-vk",
-  "version": "1.1.1",
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeu45/auth-vk.git"
+  },
+  "version": "1.1.2",
   "directories": {
     "lib": "lib"
   }

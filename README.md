@@ -9,7 +9,6 @@ AUTH-VK is a powerful [Node.js](https://nodejs.org) a module that allows you to 
 | 📖 [Documentation](https://www.npmjs.com/package/auth-vk) | 🤖 [Author](https://vk.com/zeuvs) |
 | --------------------------------------------------------- | --------------------------------- |
 
-
 ## Features
 
 - 100% coverage of the VKontakte API
@@ -79,8 +78,8 @@ callbackURL: "https://dev-up.ru/auth/vk/callback",
 В примере мы укажем права на: Список друзей, Доступ в любое время, Группы, Электронная почта.
 
 ```js
-      scope: ["offline, groups, email, friends"],
-      profileFields: ["offline, groups, email, friends"],
+      scope: ["offline", "groups", "email", "friends"],
+      profileFields: ["offline", "groups", "email", "friends"],
 ```
 
 Вот и всё!
@@ -111,8 +110,8 @@ passport.use(
       clientID: "7624701",
       clientSecret: "xZUHQ8vgnMk4okBAKn1e",
       callbackURL: "https://dev-up.ru/auth/vk/callback",
-      scope: ["offline, groups, email, friends"],
-      profileFields: ["offline, groups, email, friends"],
+      scope: ["offline", "groups", "email", "friends"],
+      profileFields: ["offline", "groups", "email", "friends"],
     },
     async function verify(accessToken, refreshToken, params, profile, done) {
       process.nextTick(function () {
