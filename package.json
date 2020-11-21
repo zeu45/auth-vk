@@ -1,0 +1,63 @@
+{
+  "_from": "auth-vk",
+  "_inBundle": false,
+  "_location": "/auth-vk",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "auth-vk",
+    "name": "auth-vk",
+    "escapedName": "auth-vk",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_spec": "auth-vk",
+  "author": "Zeu4s <admin@dev-up.ru> (https://vk.com/zeuvs)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "int-test": "mocha --require babel-core/register --recursive test"
+  },
+  "dependencies": {
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "node-fetch": "^2.6.1",
+    "passport-oauth2": "^1.5.0",
+    "test": "^0.6.0",
+    "util": "^0.12.3",
+    "vk-io": "^4.0.4"
+  },
+  "deprecated": false,
+  "description": "Authorization for websites via Vkontakte",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "keywords": [
+    "vk",
+    "api",
+    "sdk",
+    "bot",
+    "node",
+    "js",
+    "es6",
+    "es7",
+    "express",
+    "auth",
+    "vkauth",
+    "authvk",
+    "passport"
+  ],
+  "license": "MIT",
+  "main": "/",
+  "module": "/index.js",
+  "name": "auth-vk",
+  "version": "1.1.1",
+  "directories": {
+    "lib": "lib"
+  }
+}
