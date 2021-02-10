@@ -75,7 +75,7 @@ callbackURL: "https://dev-up.ru/auth/vk/callback",
 
 Затем нужно указать права приложения и отображение прав:<br>
 Список прав можно получить тут 📖 [Права приложений](https://vk.com/dev/permissions).<br>
-В примере мы укажем права на: Список друзей, Доступ в любое время, Группы, Электронная почта.
+В примере мы укажем права на: Доступ в любое время, Группы, Электронная почта, Список друзей.
 
 ```js
       scope: ["offline", "groups", "email", "friends"],
@@ -105,7 +105,7 @@ passport.deserializeUser(function (obj, done) {
 });
 
 passport.use(
- new auth(
+  new auth(
     {
       clientID: "7624701",
       clientSecret: "xZUHQ8vgnMk4okBAKn1e",
@@ -122,16 +122,16 @@ passport.use(
 );
 
 app.get("/", autch, function (req, res) {
-    res.redirect("ejs/index.ejs", {
-        user: {
-            id: req.user.id,
-            fullname: req.user.displayName,
-            pname: req.user.name,
-            sex: req.user.gender,
-            url: req.user.url
-        }
-    });
-    /*
+  res.json({
+    user: {
+      id: req.user.id,
+      fullname: req.user.displayName,
+      pname: req.user.name,
+      sex: req.user.gender,
+      url: req.user.url,
+    },
+  });
+  /*
     RESULT:
     user.id: 449532928
     user.fullname: Mihail Bezmolenko
@@ -139,36 +139,34 @@ app.get("/", autch, function (req, res) {
     user.sex: Мужской
     user.url: "http://vk.com/zeuvs"
     */
-  });
+});
 
 app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
+  req.logout();
+  res.redirect("/");
+});
 
-  app.get("/auth/vk", passport.authenticate("vkontakte"), function (req, res) {
-    req.session.returnTo = req.originalUrl;
-  });
+app.get("/auth/vk", passport.authenticate("vkontakte"), function (req, res) {
+  req.session.returnTo = req.originalUrl;
+});
 
-  app.get(
-    "/auth/vk/callback",
-    passport.authenticate("vkontakte", {
-      failureRedirect: "/",
-      session: true,
-    }),
-    async function (req, res) {
-        res.redirect(req.session.returnTo || "/");
-      delete req.session.returnTo;
-    }
-  );
-
-  async function autch(req, res, next) {
-    if (!req.user) {
-      req.session.returnTo = req.originalUrl;
-        return res.redirect('/auth/vk/');
-      }
-    }
-    return next();
+app.get(
+  "/auth/vk/callback",
+  passport.authenticate("vkontakte", {
+    failureRedirect: "/",
+    session: true,
+  }),
+  async function (req, res) {
+    res.redirect(req.session.returnTo || "/");
+    delete req.session.returnTo;
   }
+);
 
+async function autch(req, res, next) {
+  if (!req.user) {
+    req.session.returnTo = req.originalUrl;
+    return res.redirect("/auth/vk/");
+  }
+  return next();
+}
 ```
