@@ -121,7 +121,7 @@ passport.use(
   )
 );
 
-app.get("/", autch, function (req, res) {
+app.get("/", auth, function (req, res) {
   res.json({
     user: {
       id: req.user.id,
@@ -162,7 +162,7 @@ app.get(
   }
 );
 
-async function autch(req, res, next) {
+async function auth(req, res, next) {
   if (!req.user) {
     req.session.returnTo = req.originalUrl;
     return res.redirect("/auth/vk/");
